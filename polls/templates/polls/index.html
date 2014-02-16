@@ -1,0 +1,27 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" href="{% static 'polls/css/style.css' %}" type="text/css" media="screen" />
+<style type="text/css">
+body {
+    background: url({% static "polls/img/fullbody.png" %}) repeat scroll 0 0 transparent;
+    /* background: url(/static/polls/img/fullbody.png) repeat scroll 0 0 transparent; */
+}
+</style>
+<body>
+{% if latest_poll_list %}
+<ul>
+    {% for poll in latest_poll_list %}
+    <li>
+        <a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a>
+        {% comment %}
+        {% for choice in poll.choice_set.all %}
+        {{ choice.choice_text }}
+        {% endfor %}
+        {% endcomment %}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
+</body>
