@@ -17,16 +17,13 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^polls/', include('polls.urls')), 
+    url(r'^polls/', include('polls.urls', namespace="polls")), 
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
         {'sitemaps': {'cmspages': CMSSitemap}}),
+    
     url(r'^', include('cms.urls')),
 
 )
-
-# urlpatterns += patterns('',
-#                 url(r'^polls/', include('polls.urls')), 
-# )
 
 if settings.DEBUG:
     urlpatterns = patterns('',
