@@ -169,7 +169,8 @@ INSTALLED_APPS = (
 
     'reversion',
 
-    'polls', 
+    'polls',
+    'hello', 
 )
 
 
